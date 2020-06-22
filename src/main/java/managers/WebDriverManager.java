@@ -11,7 +11,7 @@ public class WebDriverManager {
 	
 	public static WebDriver driver;
 	
-	static PropertiesManager propManager;
+	private static PropertiesManager propManager;
 	
 	private static String CHROME_DRIVER_PROPERTY="webdriver.chrome.driver";
 	private static String FIREFOX_DRIVER_PROPERTY="webdriver.gecko.driver";
@@ -24,7 +24,7 @@ public class WebDriverManager {
 	
 	
 	
-	public  WebDriver getDriver() {
+	public  static WebDriver getDriver() {
 		
 		if(driver==null) {
 			driver=createDriver();
@@ -35,7 +35,7 @@ public class WebDriverManager {
 		}
 	}
 	
-	public static WebDriver createDriver() {
+	private static WebDriver createDriver() {
 		
 		if(propManager.getConfigurationValues().getDriverEnvironment().equals("local")) {
 			driver = createLocalDriver();
@@ -54,28 +54,22 @@ public class WebDriverManager {
 	
 	private static WebDriver createLocalDriver() {
 		
-		if(propManager.getConfigurationValues().getAppURL().equals("chrome")) {
-			
-			System.setProperty(CHROME_DRIVER_PROPERTY, "G:\\Projects\\SDET\\OrangeHRMApplication\\Drivers\\chromedriver.exe");
+		
+		if(propManager.getConfigurationValues().getBrowserName().equals("chrome")) {
+			System.setProperty(CHROME_DRIVER_PROPERTY, System.getProperty("user.dir")+propManager.getConfigurationValues().getDriverPath());
 			driver = new ChromeDriver();
 			
-		}else if(propManager.getConfigurationValues().getAppURL().equals("firefox")) {
+		}else if(propManager.getConfigurationValues().getBrowserName().equals("firefox")) {
 			
-			System.setProperty(FIREFOX_DRIVER_PROPERTY, propManager.getConfigurationValues().getDriverPath());
+			System.setProperty(FIREFOX_DRIVER_PROPERTY, System.getProperty("user.dir")+propManager.getConfigurationValues().getDriverPath());
 			driver = new FirefoxDriver();
 			
-		}else if(propManager.getConfigurationValues().getAppURL().equals("internetexplorer")) {
+		}else if(propManager.getConfigurationValues().getBrowserName().equals("internetexplorer")) {
 			
-			System.setProperty(INTERNETEXPLORER_DRIVER_PROPERTY, propManager.getConfigurationValues().getDriverPath());
+			System.setProperty(INTERNETEXPLORER_DRIVER_PROPERTY, System.getProperty("user.dir")+propManager.getConfigurationValues().getDriverPath());
 			driver = new InternetExplorerDriver();
-			
-		}else {
-			System.setProperty(CHROME_DRIVER_PROPERTY, propManager.getConfigurationValues().getDriverPath());
-			driver = new ChromeDriver();
 		}
-		
 		return driver;
 	}
-	
 
 }

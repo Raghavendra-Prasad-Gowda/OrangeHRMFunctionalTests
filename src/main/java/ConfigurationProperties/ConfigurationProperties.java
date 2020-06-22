@@ -54,10 +54,5 @@ public class ConfigurationProperties {
 		return prop.getProperty("environment");
 	}
 	
-	public static void main(String[] args) throws IOException {
-		ConfigurationProperties con=new ConfigurationProperties();
-	
-		System.out.println(con.getDriverPath());
-	}
 
 }
