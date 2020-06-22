@@ -1,5 +1,5 @@
-G:\Projects\SDET\OrangeHRMApplication\src\main\java\managers\PageObjectManager.java
-G:\Projects\SDET\OrangeHRMApplication\src\main\java\orangeHRMPageObjects\OrangeHRMLoginPageObjects.java
-G:\Projects\SDET\OrangeHRMApplication\src\main\java\managers\WebDriverManager.java
-G:\Projects\SDET\OrangeHRMApplication\src\main\java\managers\PropertiesManager.java
-G:\Projects\SDET\OrangeHRMApplication\src\main\java\ConfigurationProperties\ConfigurationProperties.java
+C:\Users\rragh\git\OrangeHRMFunctionalTests\src\main\java\managers\PageObjectManager.java
+C:\Users\rragh\git\OrangeHRMFunctionalTests\src\main\java\orangeHRMPageObjects\OrangeHRMLoginPageObjects.java
+C:\Users\rragh\git\OrangeHRMFunctionalTests\src\main\java\ConfigurationProperties\ConfigurationProperties.java
+C:\Users\rragh\git\OrangeHRMFunctionalTests\src\main\java\managers\PropertiesManager.java
+C:\Users\rragh\git\OrangeHRMFunctionalTests\src\main\java\managers\WebDriverManager.java

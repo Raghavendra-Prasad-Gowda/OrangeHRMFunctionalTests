@@ -9,12 +9,20 @@ public class ConfigurationProperties {
 
 	private static FileInputStream fis;
 	private static Properties prop;
-	private static String browserName;
 
-	public ConfigurationProperties() throws IOException {
-		fis = new FileInputStream(System.getProperty("user.dir")
-				+ "\\src\\test\\resources\\Configurations\\ProjectConfigurations.properties");
+	
+	static {
+		try {
+			fis = new FileInputStream(System.getProperty("user.dir")
+					+ "\\src\\test\\resources\\Configurations\\ProjectConfigurations.properties");
+		} catch (FileNotFoundException e) {
+						e.printStackTrace();
+		}
 		prop = new Properties();
+	}
+	
+	
+	public ConfigurationProperties() throws IOException {		
 		prop.load(fis);
 	}
 

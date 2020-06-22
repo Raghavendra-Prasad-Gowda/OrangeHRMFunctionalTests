@@ -102,6 +102,13 @@
 
 	<build>
 
+		<resources>
+			<resource>
+				<directory>C:\Users\rragh\git\OrangeHRMFunctionalTests\src\test\resources\Log4j</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

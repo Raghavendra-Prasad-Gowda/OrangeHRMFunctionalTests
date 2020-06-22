@@ -9,21 +9,23 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class WebDriverManager {
 	
-	public static WebDriver driver;
-	
+	private static WebDriver driver;
+	private static String userDirectory=System.getProperty("user.dir");
 	private static PropertiesManager propManager;
 	
 	private static String CHROME_DRIVER_PROPERTY="webdriver.chrome.driver";
 	private static String FIREFOX_DRIVER_PROPERTY="webdriver.gecko.driver";
 	private static String INTERNETEXPLORER_DRIVER_PROPERTY="webdriver.ie.driver";
 	
-	
-	public WebDriverManager() throws IOException {
-		propManager = new PropertiesManager();
+	static {
+		try {
+			propManager = new PropertiesManager();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
 	}
 	
-	
-	
+		
 	public  static WebDriver getDriver() {
 		
 		if(driver==null) {
@@ -56,17 +58,17 @@ public class WebDriverManager {
 		
 		
 		if(propManager.getConfigurationValues().getBrowserName().equals("chrome")) {
-			System.setProperty(CHROME_DRIVER_PROPERTY, System.getProperty("user.dir")+propManager.getConfigurationValues().getDriverPath());
+			System.setProperty(CHROME_DRIVER_PROPERTY, WebDriverManager.userDirectory+propManager.getConfigurationValues().getDriverPath());
 			driver = new ChromeDriver();
 			
 		}else if(propManager.getConfigurationValues().getBrowserName().equals("firefox")) {
 			
-			System.setProperty(FIREFOX_DRIVER_PROPERTY, System.getProperty("user.dir")+propManager.getConfigurationValues().getDriverPath());
+			System.setProperty(FIREFOX_DRIVER_PROPERTY, WebDriverManager.userDirectory+propManager.getConfigurationValues().getDriverPath());
 			driver = new FirefoxDriver();
 			
 		}else if(propManager.getConfigurationValues().getBrowserName().equals("internetexplorer")) {
 			
-			System.setProperty(INTERNETEXPLORER_DRIVER_PROPERTY, System.getProperty("user.dir")+propManager.getConfigurationValues().getDriverPath());
+			System.setProperty(INTERNETEXPLORER_DRIVER_PROPERTY, WebDriverManager.userDirectory+propManager.getConfigurationValues().getDriverPath());
 			driver = new InternetExplorerDriver();
 		}
 		return driver;

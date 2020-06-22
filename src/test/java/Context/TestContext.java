@@ -10,11 +10,10 @@ public class TestContext {
 	
 	private PageObjectManager pageObjectManager;
 	private PropertiesManager propertiesManager;
-	private WebDriverManager webDriverManager;
 	
 	public TestContext() throws IOException {
-		webDriverManager = new WebDriverManager();
-		pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
+		//Getting the driver manager
+		pageObjectManager = new PageObjectManager(WebDriverManager.getDriver());
 		propertiesManager = new PropertiesManager();
 	}
 	
@@ -22,10 +21,6 @@ public class TestContext {
 		return pageObjectManager;
 	}
 	
-	public WebDriverManager getWebDriverManager() {
-		return webDriverManager;
-	}
-
 	public PropertiesManager getPropertiesManager() {
 		return propertiesManager;
 	}
